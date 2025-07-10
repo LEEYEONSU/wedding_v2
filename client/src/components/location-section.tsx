@@ -2,18 +2,35 @@ import { motion } from "framer-motion";
 
 export default function LocationSection() {
   const openTMap = () => {
-    const location = "르비르모어 선릉역";
-    window.open(`https://tmap.life/route/search?goalName=${encodeURIComponent(location)}`, '_blank');
+    const location = "르비르모어";
+    const address = "서울특별시 강남구 테헤란로 406 샹제리제센터";
+    
+    // Try T맵 app scheme first, fallback to web
+    const tmapAppUrl = `tmap://route?goalname=${encodeURIComponent(location)}&goaladdr=${encodeURIComponent(address)}`;
+    const tmapWebUrl = `https://tmap.life/route/search?goalName=${encodeURIComponent(location + " " + address)}`;
+    
+    // Try to open T맵 app, if fails, open web version
+    try {
+      window.location.href = tmapAppUrl;
+      // Fallback to web version if app doesn't open
+      setTimeout(() => {
+        window.open(tmapWebUrl, '_blank');
+      }, 1000);
+    } catch (error) {
+      window.open(tmapWebUrl, '_blank');
+    }
   };
 
   const openNaverMap = () => {
-    const location = "르비르모어 선릉역";
-    window.open(`https://map.naver.com/v5/search/${encodeURIComponent(location)}`, '_blank');
+    const location = "르비르모어";
+    const address = "서울특별시 강남구 테헤란로 406 샹제리제센터";
+    window.open(`https://map.naver.com/v5/search/${encodeURIComponent(location + " " + address)}`, '_blank');
   };
 
   const openKakaoMap = () => {
-    const location = "르비르모어 선릉역";
-    window.open(`https://map.kakao.com/link/search/${encodeURIComponent(location)}`, '_blank');
+    const location = "르비르모어";
+    const address = "서울특별시 강남구 테헤란로 406 샹제리제센터";
+    window.open(`https://map.kakao.com/link/search/${encodeURIComponent(location + " " + address)}`, '_blank');
   };
 
   const containerVariants = {
@@ -54,20 +71,20 @@ export default function LocationSection() {
           className="bg-white rounded-lg p-6 shadow-sm mb-6"
         >
           <div className="text-center mb-4">
-            <h3 className="font-medium text-lg text-warm-brown mb-2">르비르모어</h3>
+            <h3 className="font-medium text-lg text-warm-brown mb-2">르비르모어 선릉</h3>
             <p className="text-sm text-gray-600 leading-relaxed">
-              선릉역 인근의 아름다운 웨딩홀<br />
-              서울특별시 강남구 선릉로<br />
-              지하철 2호선, 분당선 선릉역
+              서울특별시 강남구 테헤란로 406<br />
+              샹제리제센터 A동 1층, 2층<br />
+              지하철 2호선, 분당선 선릉역 1번 출구 도보 1분
             </p>
           </div>
           
           <div className="border-t pt-4">
             <h4 className="font-medium text-warm-brown mb-2">교통 안내</h4>
             <ul className="text-sm text-gray-600 space-y-1">
-              <li>• 지하철: 2호선, 분당선 선릉역</li>
-              <li>• 버스: 강남역, 선릉역 인근 정류장</li>
-              <li>• 주차: 웨딩홀 내 주차공간 이용</li>
+              <li>• 지하철: 2호선, 분당선 선릉역 1번 출구</li>
+              <li>• 버스: 선릉역 정류장 이용</li>
+              <li>• 주차: 450대 주차 가능 (2시간 무료)</li>
             </ul>
           </div>
         </motion.div>
