@@ -40,7 +40,7 @@ export default function WeddingInvitation() {
             <footer className="py-8 px-6 bg-charcoal text-white text-center">
               <div className="max-w-sm mx-auto">
                 <p className="font-script text-2xl mb-2">Seong Jun & Yeon Su</p>
-                <p className="text-sm opacity-70 mb-4">2024.10.18 | 르비르모어</p>
+                <p className="text-sm opacity-70 mb-4">2025.10.18 | 르비르모어</p>
                 <p className="text-xs opacity-60">
                   소중한 분들을 모시고<br />
                   새로운 시작을 함께 나누고자 합니다
