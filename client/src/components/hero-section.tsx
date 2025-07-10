@@ -31,7 +31,7 @@ export default function HeroSection() {
         </div>
         
         <div className="border-t border-white/30 pt-6">
-          <p className="text-sm font-light opacity-90">2024년 10월 18일 토요일 오후 5시</p>
+          <p className="text-sm font-light opacity-90">2025년 10월 18일 토요일 오후 5시</p>
           <p className="text-sm font-light opacity-90">선릉역 르비르모어</p>
         </div>
       </motion.div>
