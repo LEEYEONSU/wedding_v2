@@ -5,10 +5,10 @@ export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Black and white couple photo as background */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center" 
-        style={{ 
-          backgroundImage: `url(${heroPhotoPath})` 
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{
+          backgroundImage: `url(${heroPhotoPath})`,
         }}
       />
       <div className="absolute inset-0 from-black/30 via-transparent to-black/50 bg-[#0000007a]" />
@@ -21,17 +21,21 @@ export default function HeroSection() {
         <div className="mb-8">
           <p className="text-sm font-light opacity-80 mb-2">2025. 10. 18</p>
           <h1 className="font-script text-5xl mb-4 leading-tight">
-            Seong Jun<br />
-            <span className="text-3xl">&</span><br />
+            Sung Jun
+            <br />
+            <span className="text-3xl">&</span>
+            <br />
             Yeon Su
           </h1>
           <div className="text-lg font-light mb-6">
             <p>이성준 ♡ 이연수</p>
           </div>
         </div>
-        
+
         <div className="border-t border-white/30 pt-6">
-          <p className="text-sm font-light opacity-90">2025년 10월 18일 토요일 오후 5시</p>
+          <p className="text-sm font-light opacity-90">
+            2025년 10월 18일 토요일 오후 5시
+          </p>
           <p className="text-sm font-light opacity-90">선릉역 르비르모어</p>
         </div>
       </motion.div>
