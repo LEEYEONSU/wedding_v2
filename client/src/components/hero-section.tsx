@@ -11,8 +11,7 @@ export default function HeroSection() {
           backgroundImage: `url(${heroPhotoPath})` 
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50" />
-      
+      <div className="absolute inset-0 from-black/30 via-transparent to-black/50 bg-[#0000007a]" />
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -36,7 +35,6 @@ export default function HeroSection() {
           <p className="text-sm font-light opacity-90">선릉역 르비르모어</p>
         </div>
       </motion.div>
-      
       {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
