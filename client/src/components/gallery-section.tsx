@@ -1,33 +1,64 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
+import img1 from "@assets/01_SY_00057_1752144182676.jpg";
+import img2 from "@assets/02_SY_00074_1752144182676.jpg";
+import img3 from "@assets/03_SY_00082_1752144182676.jpg";
+import img4 from "@assets/04_SY_00226_1752144194871.jpg";
+import img5 from "@assets/07_SY_00533_1752144201272.jpg";
+import img6 from "@assets/08_SY_00811_bw_1752144201272.jpg";
+import img7 from "@assets/09_SY_00972_bw_1752144201272.jpg";
+import img8 from "@assets/10_SY_00844_1752144201272.jpg";
+import img9 from "@assets/11_SY_00876_bw_1752144225021.jpg";
+import img10 from "@assets/12_SY_01130_1752144225021.jpg";
+import img11 from "@assets/background_1752144194871.jpg";
 
 export default function GallerySection() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const images = [
     {
-      src: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800",
-      alt: "Wedding couple silhouette"
+      src: img1,
+      alt: "신랑 신부 웨딩홀에서 손잡고 있는 모습"
     },
     {
-      src: "https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800",
-      alt: "Wedding venue interior"
+      src: img2,
+      alt: "신부 단독 웨딩드레스 포즈"
     },
     {
-      src: "https://images.unsplash.com/photo-1606800052052-a08af7148866?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800",
-      alt: "Wedding flowers decoration"
+      src: img3,
+      alt: "신부 웨딩부케 들고 웃는 모습"
     },
     {
-      src: "https://images.unsplash.com/photo-1537633552985-df8429e8048b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=800",
-      alt: "Romantic couple portrait"
+      src: img4,
+      alt: "신랑 신부 웨딩홀에서 앉아있는 모습"
     },
     {
-      src: "https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
-      alt: "Wedding ceremony decorations"
+      src: img5,
+      alt: "신랑 신부 아치 앞에서 웃고 있는 모습"
     },
     {
-      src: "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=600",
-      alt: "Wedding couple golden hour"
+      src: img6,
+      alt: "신랑 신부 포옹하며 웃는 흑백 사진"
+    },
+    {
+      src: img7,
+      alt: "결혼반지 착용 모습 흑백 사진"
+    },
+    {
+      src: img8,
+      alt: "신랑 신부 계단에서 포즈"
+    },
+    {
+      src: img9,
+      alt: "신랑 신부 손잡고 계단에서 흑백 사진"
+    },
+    {
+      src: img10,
+      alt: "신랑 신부 정장 차림으로 서있는 모습"
+    },
+    {
+      src: img11,
+      alt: "신랑 신부 웨딩홀 흑백 배경"
     }
   ];
 
@@ -68,7 +99,7 @@ export default function GallerySection() {
           viewport={{ once: true }}
           className="grid grid-cols-2 gap-4 mb-8"
         >
-          {images.slice(0, 4).map((image, index) => (
+          {images.slice(0, 6).map((image, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
@@ -93,9 +124,9 @@ export default function GallerySection() {
           viewport={{ once: true }}
           className="grid grid-cols-1 gap-4"
         >
-          {images.slice(4).map((image, index) => (
+          {images.slice(6).map((image, index) => (
             <motion.div
-              key={index + 4}
+              key={index + 6}
               variants={itemVariants}
               className="aspect-[4/3] rounded-lg overflow-hidden shadow-md cursor-pointer"
               onClick={() => setSelectedImage(image.src)}
