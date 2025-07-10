@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
+import heroPhotoPath from "@assets/SY_01386_1752142331214.jpg";
 
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Romantic sunset landscape background */}
+      {/* Black and white couple photo as background */}
       <div 
         className="absolute inset-0 bg-cover bg-center" 
         style={{ 
-          backgroundImage: "url('https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080')" 
+          backgroundImage: `url(${heroPhotoPath})` 
         }}
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50" />
