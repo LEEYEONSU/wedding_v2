@@ -54,7 +54,7 @@ export default function WeddingDetails() {
               <h3 className="font-medium text-lg">예식 일정</h3>
             </div>
             <div className="space-y-2 text-charcoal">
-              <p className="text-lg font-medium">2024년 10월 18일</p>
+              <p className="text-lg font-medium">2025년 10월 18일</p>
               <p className="text-base">토요일 오후 5시</p>
               <p className="text-sm text-gray-600">가을의 따뜻한 햇살과 함께</p>
             </div>
