@@ -67,7 +67,7 @@ export default function WeddingDetails() {
             </div>
             <div className="space-y-2 text-charcoal">
               <p className="text-lg font-medium">르비르모어</p>
-              <p className="text-base">선릉역 인근</p>
+              <p className="text-base">선릉역</p>
               <p className="text-sm text-gray-600">아름다운 공간에서 만나요</p>
             </div>
           </motion.div>
