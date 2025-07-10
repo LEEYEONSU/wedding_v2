@@ -1,8 +1,7 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { DatabaseStorage } from '../server/storage';
-import { insertGuestbookEntrySchema } from '../shared/schema';
 
-const storage = new DatabaseStorage();
+// 임시 메모리 저장소 (실제 배포시에는 데이터베이스 연결 필요)
+let guestbookEntries: any[] = [];
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // CORS 설정
@@ -17,20 +16,50 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     if (req.method === 'GET') {
       // 모든 방명록 항목 조회
-      const entries = await storage.getGuestbookEntries();
-      return res.status(200).json(entries);
+      return res.status(200).json({
+        success: true,
+        data: guestbookEntries.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()),
+        message: '방명록을 성공적으로 조회했습니다.'
+      });
     }
 
     if (req.method === 'POST') {
       // 새 방명록 항목 추가
-      const validatedData = insertGuestbookEntrySchema.parse(req.body);
-      const newEntry = await storage.createGuestbookEntry(validatedData);
-      return res.status(201).json(newEntry);
+      const { guestName, message } = req.body;
+      
+      if (!guestName || !message) {
+        return res.status(400).json({
+          success: false,
+          error: '이름과 메시지는 필수입니다.'
+        });
+      }
+
+      const newEntry = {
+        id: Date.now(),
+        guestName: guestName.trim(),
+        message: message.trim(),
+        createdAt: new Date().toISOString()
+      };
+
+      guestbookEntries.push(newEntry);
+      
+      return res.status(201).json({
+        success: true,
+        data: newEntry,
+        message: '방명록이 성공적으로 작성되었습니다.'
+      });
     }
 
-    return res.status(405).json({ error: 'Method not allowed' });
+    return res.status(405).json({
+      success: false,
+      error: '지원하지 않는 HTTP 메서드입니다.'
+    });
+    
   } catch (error) {
     console.error('API Error:', error);
-    return res.status(500).json({ error: 'Internal server error' });
+    return res.status(500).json({
+      success: false,
+      error: '서버 내부 오류가 발생했습니다.'
+    });
   }
 } 
