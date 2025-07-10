@@ -19,7 +19,7 @@ export default function HeroSection() {
         className="relative z-10 text-center text-white px-6 max-w-sm mx-auto"
       >
         <div className="mb-8">
-          <p className="text-sm font-light opacity-80 mb-2">2024. 10. 18</p>
+          <p className="text-sm font-light opacity-80 mb-2">2025. 10. 18</p>
           <h1 className="font-script text-5xl mb-4 leading-tight">
             Seong Jun<br />
             <span className="text-3xl">&</span><br />
