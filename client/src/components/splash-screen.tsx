@@ -39,7 +39,7 @@ export default function SplashScreen() {
           transition={{ duration: 0.8 }}
           className="mb-8"
         >
-          <h1 className="font-script text-4xl mb-2 opacity-90">Seong Jun & Yeon Su</h1>
+          <h1 className="font-script text-4xl mb-2 opacity-90">Sung Jun & Yeon Su</h1>
           <p className="text-lg font-light tracking-wide opacity-80">이성준 ♡ 이연수</p>
         </motion.div>
         
