@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
+import { useToast } from "@/hooks/use-toast";
 
 export default function ContactSection() {
+  const { toast } = useToast();
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -16,14 +18,21 @@ export default function ContactSection() {
     visible: { opacity: 1, y: 0 }
   };
 
-  const handleCall = (person: string) => {
-    // In a real app, this would initiate a phone call
-    console.log(`Calling ${person}`);
+  const openTel = (phone: string) => {
+    window.location.href = `tel:${phone.replace(/[^0-9+]/g, "")}`;
   };
 
-  const handleMessage = (person: string) => {
-    // In a real app, this would open SMS app
-    console.log(`Messaging ${person}`);
+  const openSms = (phone: string) => {
+    window.location.href = `sms:${phone.replace(/[^0-9+]/g, "")}`;
+  };
+
+  const handleCopy = async (label: string, value: string) => {
+    try {
+      await navigator.clipboard.writeText(value);
+      toast({ title: "복사되었습니다", description: `${label} • ${value}` });
+    } catch {
+      toast({ title: "복사에 실패했어요", description: "다시 시도해주세요." });
+    }
   };
 
   return (
@@ -51,25 +60,24 @@ export default function ContactSection() {
           <motion.div variants={itemVariants} className="bg-white rounded-lg p-6 shadow-sm">
             <h3 className="font-medium text-warm-brown mb-3">신랑측</h3>
             <div className="space-y-2">
-              <p className="text-lg font-medium">이성준</p>
               <div className="flex justify-center space-x-4 mt-3">
                 <motion.button
-                  onClick={() => handleCall('이성준')}
+                  onClick={() => openTel('010-9353-5323')}
                   className="bg-warm-gold text-white px-4 py-2 rounded-lg text-sm hover:bg-warm-brown transition-colors"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <i className="fas fa-phone mr-2" />
-                  전화하기
+                  전화 010-9353-5323
                 </motion.button>
                 <motion.button
-                  onClick={() => handleMessage('이성준')}
+                  onClick={() => openSms('010-9353-5323')}
                   className="bg-green-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-600 transition-colors"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <i className="fas fa-comment mr-2" />
-                  문자하기
+                  문자 010-9353-5323
                 </motion.button>
               </div>
             </div>
@@ -78,26 +86,103 @@ export default function ContactSection() {
           <motion.div variants={itemVariants} className="bg-white rounded-lg p-6 shadow-sm">
             <h3 className="font-medium text-warm-brown mb-3">신부측</h3>
             <div className="space-y-2">
-              <p className="text-lg font-medium">이연수</p>
               <div className="flex justify-center space-x-4 mt-3">
                 <motion.button
-                  onClick={() => handleCall('이연수')}
+                  onClick={() => openTel('010-2920-8127')}
                   className="bg-warm-gold text-white px-4 py-2 rounded-lg text-sm hover:bg-warm-brown transition-colors"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <i className="fas fa-phone mr-2" />
-                  전화하기
+                  전화 010-2920-8127
                 </motion.button>
                 <motion.button
-                  onClick={() => handleMessage('이연수')}
+                  onClick={() => openSms('010-2920-8127')}
                   className="bg-green-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-600 transition-colors"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <i className="fas fa-comment mr-2" />
-                  문자하기
+                  문자 010-2920-8127
                 </motion.button>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* 마음 전하실 곳 */}
+          <motion.div variants={itemVariants} className="bg-white rounded-xl p-6 shadow-md border border-amber-100">
+            <h3 className="text-warm-brown text-xl font-semibold mb-4 flex items-center gap-2">
+              <i className="fas fa-gift text-warm-gold" /> 마음 전하실 곳
+            </h3>
+            <div className="grid grid-cols-1 gap-4 text-left">
+              {/* 신부 측 */}
+              <div className="rounded-lg border border-amber-200/60 bg-amber-50 p-4">
+                <p className="text-warm-brown font-semibold mb-2">신부 측</p>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="text-base">
+                      <span className="font-medium text-warm-brown mr-2">이연수</span>
+                      <span className="font-semibold tracking-wide text-gray-900">신한 110-291-296280</span>
+                    </div>
+                    <motion.button
+                      onClick={() => handleCopy("신부 이연수", "신한 110-291-296280")}
+                      className="text-xs px-3 py-1 rounded-md bg-warm-gold text-white hover:bg-warm-brown"
+                      whileHover={{ scale: 1.04 }}
+                      whileTap={{ scale: 0.96 }}
+                    >
+                      복사
+                    </motion.button>
+                  </div>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="text-base">
+                      <span className="font-medium text-warm-brown mr-2">부 이용준</span>
+                      <span className="font-semibold tracking-wide text-gray-900">신한 000-0000-0000</span>
+                    </div>
+                    <motion.button
+                      onClick={() => handleCopy("신부 부 이용준", "신한 000-0000-0000")}
+                      className="text-xs px-3 py-1 rounded-md bg-warm-gold text-white hover:bg-warm-brown"
+                      whileHover={{ scale: 1.04 }}
+                      whileTap={{ scale: 0.96 }}
+                    >
+                      복사
+                    </motion.button>
+                  </div>
+                </div>
+              </div>
+
+              {/* 신랑 측 */}
+              <div className="rounded-lg border border-amber-200/60 bg-amber-50 p-4">
+                <p className="text-warm-brown font-semibold mb-2">신랑 측</p>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="text-base">
+                      <span className="font-medium text-warm-brown mr-2">이성준</span>
+                      <span className="font-semibold tracking-wide text-gray-900">신한 000-000-000000</span>
+                    </div>
+                    <motion.button
+                      onClick={() => handleCopy("신랑 이성준", "신한 000-000-000000")}
+                      className="text-xs px-3 py-1 rounded-md bg-warm-gold text-white hover:bg-warm-brown"
+                      whileHover={{ scale: 1.04 }}
+                      whileTap={{ scale: 0.96 }}
+                    >
+                      복사
+                    </motion.button>
+                  </div>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="text-base">
+                      <span className="font-medium text-warm-brown mr-2">부 이인철</span>
+                      <span className="font-semibold tracking-wide text-gray-900">신한 000-0000-0000</span>
+                    </div>
+                    <motion.button
+                      onClick={() => handleCopy("신랑 부 이인철", "신한 000-0000-0000")}
+                      className="text-xs px-3 py-1 rounded-md bg-warm-gold text-white hover:bg-warm-brown"
+                      whileHover={{ scale: 1.04 }}
+                      whileTap={{ scale: 0.96 }}
+                    >
+                      복사
+                    </motion.button>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>

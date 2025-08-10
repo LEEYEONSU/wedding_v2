@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import heroPhotoPath from "@assets/SY_01386_1752142331214.jpg";
+import heroPhotoPath from "@assets/SY_01386_1752141650714.jpg";
 
 export default function HeroSection() {
   return (
