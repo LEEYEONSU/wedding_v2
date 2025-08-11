@@ -98,7 +98,7 @@ export default function LocationSection() {
             <h3 className="font-medium text-lg text-warm-brown mb-2">르비르모어 선릉</h3>
             <p className="text-sm text-gray-600 leading-relaxed">
               서울특별시 강남구 테헤란로 406<br />
-              샹제리제센터 A동 1층, 2층<br />
+              샹제리제센터 A동 2층<br />
               지하철 2호선, 분당선 선릉역 1번 출구 도보 1분
             </p>
           </div>
@@ -108,7 +108,7 @@ export default function LocationSection() {
             <ul className="text-sm text-gray-600 space-y-1">
               <li>• 지하철: 2호선, 분당선 선릉역 1번 출구</li>
               <li>• 버스: 선릉역 정류장 이용</li>
-              <li>• 주차: 450대 주차 가능 (2시간 무료)</li>
+              <li>• 주차: 300대 주차 가능 (2시간 무료)</li>
             </ul>
           </div>
         </motion.div>
