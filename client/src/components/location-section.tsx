@@ -36,7 +36,7 @@ export default function LocationSection() {
   const mapPreviewSvgDataUrl = `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(mapPreviewSvg)}`;
   const openTMap = () => {
     const name = "르비르모어";
-    const address = "서울특별시 강남구 테헤란로 406 샹제리제센터 A동 1층, 2층";
+    const address = "서울특별시 강남구 테헤란로 406 샹제리제센터 A동 2층";
     // 앱 스킴 우선: 목적지명 + 주소로 경로 안내 시도
     const appUrl = `tmap://route?goalname=${encodeURIComponent(name)}&goaladdr=${encodeURIComponent(address)}`;
     // 폴백: 웹 검색
