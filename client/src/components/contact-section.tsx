@@ -136,10 +136,10 @@ export default function ContactSection() {
                   <div className="flex items-center justify-between gap-3">
                     <div className="text-base">
                       <span className="font-medium text-warm-brown mr-2">부 이용준</span>
-                      <span className="font-semibold tracking-wide text-gray-900">신한 000-0000-0000</span>
+                      <span className="font-semibold tracking-wide text-gray-900">SC은행 220-20-033013</span>
                     </div>
                     <motion.button
-                      onClick={() => handleCopy("신부 부 이용준", "신한 000-0000-0000")}
+                      onClick={() => handleCopy("신부 부 이용준", "SC은행 220-20-033013")}
                       className="text-xs px-3 py-1 rounded-md bg-warm-gold text-white hover:bg-warm-brown"
                       whileHover={{ scale: 1.04 }}
                       whileTap={{ scale: 0.96 }}
