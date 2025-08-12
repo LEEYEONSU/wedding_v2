@@ -133,7 +133,7 @@ export default function ContactSection() {
                       복사
                     </motion.button>
                   </div>
-                  <div className="flex items-center justify-between gap-3">
+{/*                   <div className="flex items-center justify-between gap-3">
                     <div className="text-base">
                       <span className="font-medium text-warm-brown mr-2">모 김희아</span>
                       <span className="font-semibold tracking-wide text-gray-900">신한 000-0000-0000</span>
@@ -146,7 +146,7 @@ export default function ContactSection() {
                     >
                       복사
                     </motion.button>
-                  </div>
+                  </div> */}
                   <div className="flex items-center justify-between gap-3">
                     <div className="text-base">
                       <span className="font-medium text-warm-brown mr-2">부 이용준</span>
@@ -182,7 +182,7 @@ export default function ContactSection() {
                       복사
                     </motion.button>
                   </div>
-                  <div className="flex items-center justify-between gap-3">
+{/*                   <div className="flex items-center justify-between gap-3">
                     <div className="text-base">
                       <span className="font-medium text-warm-brown mr-2">모 정수진</span>
                       <span className="font-semibold tracking-wide text-gray-900">신한 000-0000-0000</span>
@@ -195,7 +195,7 @@ export default function ContactSection() {
                     >
                       복사
                     </motion.button>
-                  </div>
+                  </div> */}
                   <div className="flex items-center justify-between gap-3">
                     <div className="text-base">
                       <span className="font-medium text-warm-brown mr-2">부 이인철</span>
