@@ -135,6 +135,20 @@ export default function ContactSection() {
                   </div>
                   <div className="flex items-center justify-between gap-3">
                     <div className="text-base">
+                      <span className="font-medium text-warm-brown mr-2">모 김희아</span>
+                      <span className="font-semibold tracking-wide text-gray-900">신한 000-0000-0000</span>
+                    </div>
+                    <motion.button
+                      onClick={() => handleCopy("신부 모 김희아", "신한 000-0000-0000")}
+                      className="text-xs px-3 py-1 rounded-md bg-warm-gold text-white hover:bg-warm-brown"
+                      whileHover={{ scale: 1.04 }}
+                      whileTap={{ scale: 0.96 }}
+                    >
+                      복사
+                    </motion.button>
+                  </div>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="text-base">
                       <span className="font-medium text-warm-brown mr-2">부 이용준</span>
                       <span className="font-semibold tracking-wide text-gray-900">SC은행 220-20-033013</span>
                     </div>
@@ -162,6 +176,20 @@ export default function ContactSection() {
                     <motion.button
                       onClick={() => handleCopy("신랑 이성준", "3333-336-504770")}
                       className="text-xs px-3 py-1 rounded-md bg-warm-gold text-white hover:bg-warm-brown"
+                      whileHover={{ scale: 1.04 }}
+                      whileTap={{ scale: 0.96 }}
+                    >
+                      복사
+                    </motion.button>
+                  </div>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="text-base">
+                      <span className="font-medium text-warm-brown mr-2">모 정수진</span>
+                      <span className="font-semibold tracking-wide text-gray-900">신한 000-0000-0000</span>
+                    </div>
+                    <motion.button
+                      onClick={() => handleCopy("신랑 모 정수진", "신한 000-0000-0000")}
+                      className="text-xs px-3 py-1 rounded-md bg-warm-g올드 text-white hover:bg-warm-brown"
                       whileHover={{ scale: 1.04 }}
                       whileTap={{ scale: 0.96 }}
                     >
