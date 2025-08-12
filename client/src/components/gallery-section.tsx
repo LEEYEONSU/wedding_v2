@@ -26,6 +26,15 @@ import img9 from "@assets/11_SY_00876_bw_1752144225021.jpg";
 import img10 from "@assets/12_SY_01130_1752144225021.jpg";
 import img11 from "@assets/background_1752144194871.jpg";
 
+// Dynamically include any user-uploaded images placed under `attached_assets/uploads/`
+// Files: .jpg, .jpeg, .png, .webp
+const uploadedImageModules = import.meta.glob("@assets/uploads/*.{jpg,jpeg,png,webp}", {
+  eager: true,
+});
+const uploadedImagesSrc: string[] = Object.values(uploadedImageModules)
+  .map((mod: any) => mod?.default as string)
+  .filter(Boolean);
+
 type GalleryImage = { src: string; alt: string; full?: string };
 
 export default function GallerySection() {
@@ -35,7 +44,7 @@ export default function GallerySection() {
   const isPanningRef = useRef(false);
   const lastPointRef = useRef<{ x: number; y: number } | null>(null);
 
-  const images: GalleryImage[] = [
+  const curatedImages: GalleryImage[] = [
     {
       src: img1,
       full: img1Full,
@@ -93,6 +102,14 @@ export default function GallerySection() {
     }
   ];
 
+  // Map dynamically discovered images into the gallery model (full == src)
+  // Recent-first by filename for a predictable order
+  const dynamicImages: GalleryImage[] = uploadedImagesSrc
+    .sort((a, b) => (a > b ? -1 : 1))
+    .map((src) => ({ src, full: src, alt: "추가 갤러리 사진" }));
+
+  const images: GalleryImage[] = [...dynamicImages, ...curatedImages];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -128,61 +145,33 @@ export default function GallerySection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-2 gap-4 mb-8"
+          className="mb-8"
         >
-          {images.slice(0, 6).map((image, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className="aspect-square rounded-lg overflow-hidden shadow-md cursor-pointer"
-              onClick={() => {
-                setSelectedImage(image.full ?? image.src);
-                setScale(1);
-                setTranslate({ x: 0, y: 0 });
-              }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full h-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-            </motion.div>
-          ))}
-        </motion.div>
-        
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 gap-4"
-        >
-          {images.slice(6).map((image, index) => (
-            <motion.div
-              key={index + 6}
-              variants={itemVariants}
-              className="aspect-[4/3] rounded-lg overflow-hidden shadow-md cursor-pointer"
-              onClick={() => {
-                setSelectedImage(image.full ?? image.src);
-                setScale(1);
-                setTranslate({ x: 0, y: 0 });
-              }}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full h-full object-cover"
-              loading="lazy"
-              decoding="async"
-            />
-            </motion.div>
-          ))}
+          <div className="grid grid-cols-4 gap-2 h-[420px] overflow-y-auto pr-1">
+            {images.map((image, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="aspect-square rounded-lg overflow-hidden shadow-md cursor-pointer"
+                onClick={() => {
+                  setSelectedImage(image.full ?? image.src);
+                  setScale(1);
+                  setTranslate({ x: 0, y: 0 });
+                }}
+              >
+                <motion.img
+                  src={image.src}
+                  alt={image.alt}
+                  className="w-full h-full object-cover will-change-transform"
+                  whileHover={{ scale: 1.06 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: "spring", stiffness: 260, damping: 20 }}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
       </div>
 

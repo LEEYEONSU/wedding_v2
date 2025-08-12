@@ -50,6 +50,21 @@ export default function WeddingDetails() {
           
           <motion.div variants={itemVariants} className="bg-white rounded-lg p-6 shadow-sm">
             <div className="text-warm-brown mb-4">
+              <i className="fas fa-user-friends text-warm-gold text-xl mb-2" />
+              <h3 className="font-medium text-lg">혼주</h3>
+            </div>
+            <div className="space-y-2 text-charcoal">
+              <p className="text-base">
+                <span className="font-bold">이용준</span> · <span className="font-bold">김희아</span>의 딸 <span className="font-bold">이연수</span>
+              </p>
+              <p className="text-base">
+                <span className="font-bold">이인철</span> · <span className="font-bold">정수진</span>의 아들 <span className="font-bold">이성준</span>
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.div variants={itemVariants} className="bg-white rounded-lg p-6 shadow-sm">
+            <div className="text-warm-brown mb-4">
               <i className="fas fa-calendar-alt text-warm-gold text-xl mb-2" />
               <h3 className="font-medium text-lg">예식 일정</h3>
             </div>
